@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Regionalisasi Jumlah Penduduk Indonesia 2025</title>
+  <!--Menghubungkan Chart.js untuk membuat grafik-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--===== GAYA HALAMAN (CSS) =====-->
+  <style>
+    /*===== BODY: Pengaturan umum halaman =====*/
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #f8f9fb;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER: bagian atas halaman ===== */
+    .header {
+      text-align: center;
+      padding: 50px 20px 40px 20px;
+      background: linear-gradient(135deg, #0055aa, #7db9ff, #e8f1ff);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+    .header img {
+      width: 110px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.3));
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      margin: 10px 0 8px 0;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .header .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-top: 5px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* ===== TABEL: menampilkan data provinsi dan jumlah penduduk ===== */
+    table {
+      width: 80%;
+      margin: 50px auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      border: 1px solid #d0d7de;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: center;
+      font-weight: bold;
+      color: #004b8d;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    thead {
+      background: linear-gradient(to right, #5f9bcf, #9ac3e6);
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    th, td {
+      padding: 12px 18px;
+      text-align: center;
+      border-bottom: 1px solid #e3e6ea;
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f7fb;
+    }
+    /* Pewarnaan baris genap dan efek hover */
+    tr:hover {
+      background-color: #dcecff;
+      transition: 0.3s ease;
+    }
+
+    /* =====  BAGIAN GRAFIK ===== */
+    .chart-container {
+      width: 85%;
+      max-width: 1100px;
+      margin: 60px auto;
+      background: linear-gradient(to bottom, #d0dbef, #fbfbfb);
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(5, 5, 5, 0.12);
+    }
+
+    canvas {
+      width: 100%;
+      height: 480px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #555;
+      font-size: 15px;
+      font-style: italic;
+      padding-bottom: 30px;
+    }
+  </style>
+      </head>
+<body>
+<!-- ===== HEADER (Bagian atas halaman) ===== -->
+<div class="header">
+    <img src="LOGO BPSS.PNG" alt="LOGO BPSS">
+    <h1>Data Regionalisasi Jumlah Penduduk Indonesia Tahun 2025</h1>
+    <div class="divider"></div>
+    <p class="subtitle">Dibuat oleh: <strong>Shifa Aqila Rahmawati</strong></p>
+  </div>
+<!-- ======== TABEL DATA ======== -->
+ <!-- Menampilkan daftar jumlah penduduk per provinsi -->
+<table>
+    <caption>Daftar Jumlah Penduduk per Provinsi</caption>
+    <thead>
+      <tr>
+        <th>Provinsi</th>
+        <th>Penduduk (ribu jiwa)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Papua Selatan</td><td>549.7</td></tr>
+      <tr><td>Papua Barat</td><td>587.6</td></tr>
+      <tr><td>Papua Barat Daya</td><td>636.4</td></tr>
+      <tr><td>Kalimantan Utara</td><td>749.4</td></tr>
+      <tr><td>Papua</td><td>1073.6</td></tr>
+      <tr><td>Gorontalo</td><td>1242.2</td></tr>
+      <tr><td>Maluku Utara</td><td>1373.8</td></tr>
+      <tr><td>Papua Pegunungan</td><td>1484.9</td></tr>
+      <tr><td>Papua Tengah</td><td>1492.3</td></tr>
+      <tr><td>Sulawesi Barat</td><td>1525.3</td></tr>
+      <tr><td>Kepulauan Bangka Belitung</td><td>1550.8</td></tr>
+      <tr><td>Maluku</td><td>1970.6</td></tr>
+      <tr><td>Bengkulu</td><td>2183.0</td></tr>
+      <tr><td>Kepulauan Riau</td><td>2715.4</td></tr>
+      <tr><td>Sulawesi Utara</td><td>2721.4</td></tr>
+      <tr><td>Sulawesi Tenggara</td><td>2836.7</td></tr>
+      <tr><td>Kalimantan Tengah</td><td>2845.1</td></tr>
+      <tr><td>Sulawesi Tengah</td><td>3165.1</td></tr>
+      <tr><td>Jambi</td><td>3768.5</td></tr>
+      <tr><td>DI Yogyakarta</td><td>3781.5</td></tr>
+      <tr><td>Kalimantan Timur</td><td>4323.3</td></tr>
+      <tr><td>Kalimantan Selatan</td><td>4623.3</td></tr>
+      <tr><td>Bali</td><td>4814.0</td></tr>
+      <tr><td>Aceh</td><td>5626.0</td></tr>
+      <tr><td>Nusa Tenggara Barat</td><td>5731.1</td></tr>
+      <tr><td>Nusa Tenggara Timur</td><td>5746.6</td></tr>
+      <tr><td>Kalimantan Barat</td><td>5912.3</td></tr>
+      <tr><td>Sumatera Barat</td><td>5914.1</td></tr>
+      <tr><td>Riau</td><td>6831.2</td></tr>
+      <tr><td>Sumatera Selatan</td><td>8928.5</td></tr>
+      <tr><td>Lampung</td><td>9522.9</td></tr>
+      <tr><td>Sulawesi Selatan</td><td>9672.3</td></tr>
+      <tr><td>DKI Jakarta</td><td>10574.0</td></tr>
+      <tr><td>Banten</td><td>12537.4</td></tr>
+      <tr><td>Jawa Timur</td><td>40839.3</td></tr>
+      <tr><td>Jawa Tengah</td><td>38253.1</td></tr>
+      <tr><td>Jawa Barat</td><td>50759.0</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===== BAGIAN GRAFIK ===== -->
+   <!-- Kanvas tempat chart.js menggambar grafik batang -->
+  <div class="chart-container">
+    <canvas id="grafikPenduduk"></canvas>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    Sumber: Badan Pusat Statistik (2025)
+  </footer>
+
+  <!-- ===== SCRIPT JAVASCRIPT UNTUK GRAFIK ===== -->
+  <script>
+    // Ambil elemen <canvas> untuk membuat garfik
+    const ctx = document.getElementById('grafikPenduduk').getContext('2d');
+
+    // Membuat garfik batang menggunakan Chart.js
+    new Chart(ctx, {
+      type: 'bar', // Jenis grafik: batang
+      data: {
+        // Label di sumbu X (nama provinsi)
+        labels: ["Papua Selatan","Papua Barat","Papua Barat Daya","Kalimantan Utara","Papua","Gorontalo","Maluku Utara","Papua Pegunungan","Papua Tengah","Sulawesi Barat","Kep. Bangka Belitung","Maluku","Bengkulu","Kep. Riau","Sulawesi Utara","Sulawesi Tenggara","Kalimantan Tengah","Sulawesi Tengah","Jambi","DI Yogyakarta","Kalimantan Timur","Kalimantan Selatan","Bali","Aceh","NTB","NTT","Kalimantan Barat","Sumatera Barat","Riau","Sumatera Selatan","Lampung","Sulawesi Selatan","DKI Jakarta","Banten","Jawa Timur","Jawa Tengah","Jawa Barat"],
+
+        // Data jumlah penduduk untuk tiap provinsi
+        datasets: [{
+          label: 'Jumlah Penduduk (ribu jiwa)',
+          data: [549.7,587.6,636.4,749.4,1073.6,1242.2,1373.8,1484.9,1492.3,1525.3,1550.8,1970.6,2183.0,2715.4,2721.4,2836.7,2845.1,3165.1,3768.5,3781.5,4323.3,4623.3,4814.0,5626.0,5731.1,5746.6,5912.3,5914.1,6831.2,8928.5,9522.9,9672.3,10574.0,12537.4,40839.3,38253.1,50759.0],
+          backgroundColor: 'rgba(0, 75, 141, 0.7)',
+          borderColor: '#003b70',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        // Pengaturan tambahan (judul, sumbu, Legenda)
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Grafik Jumlah Penduduk Indonesia Tahun 2025',
+            font: { family: 'Times New Roman', size: 18, weight: 'bold' },
+            color: '#004b8d'
+          }
+        },
+        scales: {
+          x: {
+            // Pengaturan sumbu X
+            ticks: { font: { family: 'Times New Roman' }, maxRotation: 60, minRotation: 45 },
+            title: {
+              display: true,
+              text: 'Provinsi',
+              font: { family: 'Times New Roman', weight: 'bold' },
+              color: '#333'
+            }
+          },
+          y: {
+            // Pengaturan sumbu Y
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Penduduk (ribu jiwa)',
+              font: { family: 'Times New Roman', weight:'bold' },
+              color: '#333'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
